@@ -1,0 +1,5 @@
+" Graphical settings for MacVim
+" Automatically imported through gvimrc
+
+set guifont=Inconsolata:h8	  " Font family and font size.
+set antialias                     " MacVim: smooth fonts.

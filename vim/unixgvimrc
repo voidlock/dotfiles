@@ -1,0 +1,4 @@
+" Unix gvimrc settings
+" Automatically imported by gvimrc
+
+set guifont=Bitstream\ Vera\ Sans\ Mono\ 10,Fixed\ 10
