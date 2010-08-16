@@ -83,12 +83,15 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 
 map tt :NERDTreeToggle<Enter>
 
-" Controversial...swap colon and semicolon for easier commands
-"nnoremap ; :
-"nnoremap : ;
+" Settings for erlvim
+let g:erlangHighlightBif=1
+let g:erlangFold=1
+let g:erlangFoldSplitFunction=0 " breaks regular folding
+" Might need to adjust these two for OSX
+let g:erlangCompletionGrep='zgrep'
+let g:erlangManSuffix='erl\.gz'
+let g:erlangCompletionDisplayDoc=1
 
-"vnoremap ; :
-"vnoremap : ;
 
 " Automatic fold settings for specific files. Uncomment to use.
 " autocmd FileType ruby setlocal foldmethod=syntax
