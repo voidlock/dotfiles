@@ -10,8 +10,6 @@ colorscheme vividchalk
 
 set guioptions-=r                 " Don't show right scrollbar
 
-if has("mac")
-  source $HOME/.vim/macgvimrc
-elseif has("unix")
-  source $HOME/.vim/unixgvimrc
-endif
+" Graphical settings for MacVim
+set guifont=Inconsolata:h14       " Font family and font size.
+set antialias                     " MacVim: smooth fonts.
