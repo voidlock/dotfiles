@@ -1,0 +1,10 @@
+---
+:update_sources: true
+:bulk_threshold: 1000
+:sources:
+- http://rubygems.org/
+- https://people.bravenet.com/aarnell/rubygems/
+:verbose: true
+:benchmark: false
+:backtrace: false
+gem: --no-ri --no-rdoc
