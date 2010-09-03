@@ -5,13 +5,10 @@ set encoding=utf-8                " Use UTF-8 everywhere.
 set guioptions-=T                 " Hide toolbar.
 set lines=30 columns=130          " Window dimensions.
 
+" Use bitstream font
+set guifont=Bitstream\ Vera\ Sans\ Mono\ 10,Fixed\ 10
+
 " Or use vividchalk
 colorscheme vividchalk
 
 set guioptions-=r                 " Don't show right scrollbar
-
-if has("mac")
-  source $HOME/.vim/macgvimrc
-elseif has("unix")
-  source $HOME/.vim/unixgvimrc
-endif
