@@ -50,8 +50,13 @@ if [ "$TERM" != 'dumb' ] && [ -n "$BASH" ] && [ -n "$PS1" ]; then
     if [ -f $BASH_COMPLETION ] && [ -f ~/.bash_completion.d/git-completion.bash ]; then
       export PS1='\[\e[01;32m\]\u@\h\[\e[01;34m\] \w\[\e[01;36m\]$(__git_ps1 " (%s)") \[\e[01;34m\]\$ \[\e[00m\]'
     else
-     export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\W \$ \[\033[00m\]'
-   fi
+      export PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\W \$ \[\033[00m\]'
+    fi
+    if [ -f ~/.rvm/bin/rvm-prompt ]; then
+      export PS1="rvm(\$(~/.rvm/bin/rvm-prompt v p s)) $PS1"
+    else
+      export "$PS1"
+    fi
   fi
 fi
 
