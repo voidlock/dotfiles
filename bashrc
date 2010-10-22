@@ -60,6 +60,8 @@ if [ "$TERM" != 'dumb' ] && [ -n "$BASH" ] && [ -n "$PS1" ]; then
   fi
 fi
 
+export EDITOR="mvim -f"
+
 # for RVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
