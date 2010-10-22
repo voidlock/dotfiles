@@ -1,6 +1,5 @@
 # User specific environment and startup programs
-# Setting adjusted for DarwinPorts.
-export PATH=$PATH:/usr/local/sbin:$HOME/bin
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$HOME/bin:$PATH
 export MANPATH=/usr/local/man:$MANPATH
 export DISPLAY=:0.0
 
