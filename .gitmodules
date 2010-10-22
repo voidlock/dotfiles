@@ -56,3 +56,9 @@
 [submodule "vim/bundle/vimerl"]
 	path = vim/bundle/vimerl
 	url = git://github.com/oscarh/vimerl.git
+[submodule "vim/bundle/gist-vim"]
+	path = vim/bundle/gist-vim
+	url = http://github.com/mattn/gist-vim.git
+[submodule "vim/bundle/vim-coffee-script"]
+	path = vim/bundle/vim-coffee-script
+	url = http://github.com/kchmck/vim-coffee-script.git

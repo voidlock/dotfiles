@@ -9,11 +9,12 @@ call pathogen#runtime_append_all_bundles()
 
 syntax on                         " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
-set tabstop=2                    " Global tab width.
+set tabstop=2                     " Global tab width.
+set softtabstop=2                 " Again, related
+set shiftwidth=2                  " And again, related.
+set expandtab                     " Use spaces instead of tabs
 set smarttab
-set shiftwidth=2                 " And again, related.
 set autoindent
-set expandtab                    " Use spaces instead of tabs
 
 runtime macros/matchit.vim        " Load the matchit plugin.
 
@@ -29,7 +30,6 @@ set wildmode=list:longest         " Complete files like a shell.
 
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
-
 set number                        " Show line numbers.
 set ruler                         " Show cursor position.
 
@@ -47,39 +47,23 @@ set nobackup                      " Don't make a backup before overwriting a fil
 set nowritebackup                 " And again.
 set directory=$HOME/.vim/tmp/,.   " Keep swap files in one location
 
-" Strips trailing whitespace
-function! StripTrailingWhitespace()
-  normal mZ
-  %s/\s\+$//e
-  if line("'Z") != line(".")
-    echo "Stripped whitespace\n"
-  endif
-  normal `Z
-endfunction
-set list listchars=tab:»·,trail:·
-autocmd FileWritePre * :call StripTrailingWhitespace()
-autocmd FileAppendPre * :call StripTrailingWhitespace()
-autocmd FilterWritePre * :call StripTrailingWhitespace()
-autocmd BufWritePre * :call StripTrailingWhitespace()
-
-map <F2> :call StripTrailingWhitespace()<CR>
-map! <F2> :call StripTrailingWhitespace()<CR>
-
 set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
-
 " Tab mappings.
-"map <leader>tt :tabnew<cr>
-"map <leader>te :tabedit
-"map <leader>tc :tabclose<cr>
-"map <leader>to :tabonly<cr>
-"map <leader>tn :tabnext<cr>
-"map <leader>tp :tabprevious<cr>
-"map <leader>tf :tabfirst<cr>
-"map <leader>tl :tablast<cr>
-"map <leader>tm :tabmove
+map <D-S-]> gt
+map <D-S-[> gT
+map <D-1> 1gt
+map <D-2> 2gt
+map <D-3> 3gt
+map <D-4> 4gt
+map <D-5> 5gt
+map <D-6> 6gt
+map <D-7> 7gt
+map <D-8> 8gt
+map <D-9> 9gt
+map <D-0> :tablast<CR>
 
 map tt :NERDTreeToggle<Enter>
 
@@ -92,11 +76,38 @@ let g:erlangCompletionGrep='zgrep'
 let g:erlangManSuffix='erl\.gz'
 let g:erlangCompletionDisplayDoc=1
 
-
 " Automatic fold settings for specific files. Uncomment to use.
 " autocmd FileType ruby setlocal foldmethod=syntax
 " autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
 
 " For the MakeGreen plugin and Ruby RSpec. Uncomment to use.
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+set list "Set it on by default
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+" Strips trailing whitespace
+function! StripTrailingWhitespace()
+  normal mZ
+  %s/\s\+$//e
+  if line("'Z") != line(".")
+    echo "Stripped whitespace\n"
+  endif
+  normal `Z
+endfunction
+autocmd FileWritePre * :call StripTrailingWhitespace()
+autocmd FileAppendPre * :call StripTrailingWhitespace()
+autocmd FilterWritePre * :call StripTrailingWhitespace()
+autocmd BufWritePre * :call StripTrailingWhitespace()
+
+map <F2> :call StripTrailingWhitespace()<CR>
+map! <F2> :call StripTrailingWhitespace()<CR>
+
+
+let g:gist_detect_filetype = 1
+let g:gist_clip_command = 'pbcopy'
 
