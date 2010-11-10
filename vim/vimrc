@@ -7,8 +7,24 @@ filetype off
 "silent! call pathogen#runtime_append_all_bundles()
 call pathogen#runtime_append_all_bundles()
 
-syntax on                         " Turn on syntax highlighting.
-filetype plugin indent on         " Turn on file type detection.
+
+if has("autocmd")
+  " Enable filetype detection
+  filetype plugin indent on         " Turn on file type detection.
+
+
+  " Restore cursor position
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+endif
+if &t_Co > 2 || has("gui_running")
+  " Enable syntax highlighting
+  syntax on
+endif
+
+
 set tabstop=2                     " Global tab width.
 set softtabstop=2                 " Again, related
 set shiftwidth=2                  " And again, related.
@@ -45,7 +61,7 @@ set visualbell                    " No beeping.
 
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
-set directory=$HOME/.vim/tmp/,.   " Keep swap files in one location
+set directory^=$HOME/.vim/tmp//   " Keep swap files in one location
 
 set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
